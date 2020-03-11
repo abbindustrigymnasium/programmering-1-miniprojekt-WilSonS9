@@ -7,7 +7,8 @@ const partier = [
     min: 3,
     max: 12,
     ledare: "Gustavo Frigolito",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Partikelpartiet",
@@ -16,7 +17,8 @@ const partier = [
     min: 2,
     max: 8,
     ledare: "Forse Va",
-    röster: 1
+    röster: 1,
+    platser: 0
   },
   {
     parti: "Mälarpartiet",
@@ -25,7 +27,8 @@ const partier = [
     min: 8,
     max: 18,
     ledare: "Emde Hå",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Sjörövarpartiet",
@@ -34,7 +37,8 @@ const partier = [
     min: 3,
     max: 12,
     ledare: "Arrr yarrrr",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Extremisterna",
@@ -43,7 +47,8 @@ const partier = [
     min: 3,
     max: 6,
     ledare: "Hejdolf Snitler",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Maskinpartiet",
@@ -52,7 +57,8 @@ const partier = [
     min: 12,
     max: 22,
     ledare: "Mr. Bionicle",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Framtidspartiet",
@@ -61,7 +67,8 @@ const partier = [
     min: 12,
     max: 18,
     ledare: "Andrew Yang",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Allpartiet",
@@ -70,7 +77,8 @@ const partier = [
     min: 20,
     max: 34,
     ledare: "Jesus Kristus",
-    röster: 0
+    röster: 0,
+    platser: 0
   }
 ];
 
@@ -100,7 +108,9 @@ let newIdString = ""; //Samma idString fast utan det sista och-et
 let newBlockString = ""; //Samma som newIdString fast med blockString
 let oljeRiksdag = 0;
 let småRiksdag = 0;
-let ingenRiksdag = 0;
+let oljeRiksdagProcent = 0;
+let småRiksdagProcent = 0;
+let ingaRiksdagProcent = 0;
 
 //Objekt med alla block och deras röster
 let blockArr = [
@@ -159,13 +169,6 @@ for (let i = 0; i < partier.length; i++) {
     störstaParti = i;
   }
 
-  //Lägger till partiets röster till sitt blocks totala röster
-  if (partier[i].block == "Oljeblocket") {
-    oljeRöster += partier[i].röster;
-  } else if (partier[i].block == "Småpartierna") {
-    småRöster += partier[i].röster;
-  }
-
   //Samma som det som räknar ut största parti fast för minsta parti
   if (partier[i].röster < partier[minstaParti].röster) {
     minstaParti = i;
@@ -182,16 +185,11 @@ for (let i = 0; i < partier.length; i++) {
 }
 
 for (let i = 0; i < partier.length; i++) {
+  if (partier[i].röster / totalRöster >= 0.04) {
+    partier[i].platser = (partier[i].röster * 349) / riksdagsRöster;
+  }
   let röstProcent = (partier[i].röster / totalRöster) * 100;
   let rounded = röstProcent.toFixed(2);
-  let riksdagsplatser = 0;
-  let roundedRiksdag = 0;
-  let antalPlatser = 0;
-  if (partier[i].röster / totalRöster >= 0.04) {
-    riksdagsplatser = (partier[i].röster / riksdagsRöster) * 100;
-    roundedRiksdag = riksdagsplatser.toFixed(2);
-    antalPlatser = Math.round((partier[i].röster / riksdagsRöster) * 349);
-  }
   console.log(
     partier[i].parti +
       " fick: " +
@@ -201,12 +199,34 @@ for (let i = 0; i < partier.length; i++) {
       "% av rösterna!"
   );
   console.log(
-    "Antal riksdagsplatser: " +
-      antalPlatser +
-      "! Detta motsvarar: " +
-      roundedRiksdag +
+    "Andel riksdagsplatser: " +
+      ((partier[i].platser * 100) / 349).toFixed(2) +
       "%!"
   );
+
+  //Lägger till partiets röster till sitt blocks totala röster
+  if (
+    partier[i].block == "Oljeblocket" &&
+    partier[i].röster / totalRöster >= 0.04
+  ) {
+    oljeRiksdag += partier[i].röster;
+  } else if (
+    partier[i].block == "Småpartierna" &&
+    partier[i].röster / totalRöster >= 0.04
+  ) {
+    småRiksdag += partier[i].röster;
+  }
+  if (partier[i].block == "Oljeblocket") {
+    oljeRöster += partier[i].röster;
+  } else if (partier[i].block == "Småpartierna") {
+    småRöster += partier[i].röster;
+  }
+  if (partier[i].vänster == vänsterStörst) {
+    störstaIdeologiArr += i;
+  }
+  if (partier[i].block == blockArr[störstaBlock].block) {
+    störstaBlockArr += i;
+  }
 }
 
 console.log("");
@@ -229,27 +249,18 @@ if (vänsterRöster > högerRöster) {
   vänsterStörst = false;
 }
 
-for (let i = 0; i < partier.length; i++) {
-  if (partier[i].vänster == vänsterStörst) {
-    störstaIdeologiArr += i;
-  }
-  if (partier[i].block == blockArr[störstaBlock].block) {
-    störstaBlockArr += i;
-  }
-}
-
 blockRöster = oljeRöster + småRöster;
 ingaRöster = totalRöster - blockRöster;
 oljeProcent = (oljeRöster / totalRöster) * 100;
 småProcent = (småRöster / totalRöster) * 100;
 ingaProcent = (ingaRöster / totalRöster) * 100;
+oljeRiksdagProcent = ((oljeRiksdag * 100) / riksdagsRöster).toFixed(2);
+småRiksdagProcent = ((småRiksdag * 100) / riksdagsRöster).toFixed(2);
+ingaRiksdagProcent = ((ingaRöster * 100) / riksdagsRöster).toFixed(2);
 störstaProcent = (partier[störstaParti].röster / totalRöster) * 100;
 vänsterProcent = (vänsterRöster / totalRöster) * 100;
 högerProcent = (högerRöster / totalRöster) * 100;
 befolkningProcent = (totalRöster / befolkning) * 100;
-oljeRiksdag = Math.round((oljeRöster / riksdagsRöster) * 349);
-småRiksdag = Math.round((småRöster / riksdagsRöster) * 349);
-ingenRiksdag = Math.round((småRöster / riksdagsRöster) * 349);
 
 console.log(
   partier[störstaParti].parti +
@@ -282,23 +293,24 @@ console.log(
     " människor röstade på Oljeblocket! Detta motsvarar: " +
     oljeProcent.toFixed(2) +
     "% av rösterna! Blocket får då: " +
-    oljeRiksdag +
-    " riksdagsplatser!"
+    oljeRiksdagProcent +
+    "% av riksdagsplatser!"
 );
 console.log(
   småRöster +
     " människor röstade på Småpartierna! Detta motsvarar: " +
     småProcent.toFixed(2) +
     "% av rösterna! Blocket får då: " +
-    småRiksdag +
-    " riksdagsplatser!"
+    småRiksdagProcent +
+    "% av riksdagsplatser!"
 );
 console.log(
   ingaRöster +
     " människor röstade inte på något block! Detta motsvarar: " +
     ingaProcent.toFixed(2) +
-    "% av rösterna! Antalet riksdagsplatser utan block: " +
-    ingenRiksdag
+    "% av rösterna! Andel riksdagsplatser utan block: " +
+    ingaRiksdagProcent +
+    "%!"
 );
 console.log("");
 console.log(
