@@ -7,7 +7,8 @@ const partier = [
     min: 3,
     max: 12,
     ledare: "Gustavo Frigolito",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Partikelpartiet",
@@ -16,7 +17,8 @@ const partier = [
     min: 2,
     max: 8,
     ledare: "Forse Va",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Mälarpartiet",
@@ -25,7 +27,8 @@ const partier = [
     min: 8,
     max: 18,
     ledare: "Emde Hå",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Sjörövarpartiet",
@@ -34,7 +37,8 @@ const partier = [
     min: 3,
     max: 12,
     ledare: "Arrr yarrrr",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Extremisterna",
@@ -43,7 +47,8 @@ const partier = [
     min: 3,
     max: 6,
     ledare: "Hejdolf Snitler",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Maskinpartiet",
@@ -52,7 +57,8 @@ const partier = [
     min: 12,
     max: 22,
     ledare: "Mr. Bionicle",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Framtidspartiet",
@@ -61,7 +67,8 @@ const partier = [
     min: 12,
     max: 18,
     ledare: "Andrew Yang",
-    röster: 0
+    röster: 0,
+    platser: 0
   },
   {
     parti: "Allpartiet",
@@ -70,23 +77,11 @@ const partier = [
     min: 20,
     max: 34,
     ledare: "Jesus Kristus",
-    röster: 0
+    röster: 0,
+    platser: 0
   }
 ];
 
-//Här deklareras alla variabler, de flesta är ganska självklara
-let totalRöster = 0;
-let befolkning = 0;
-let störstaParti = 0;
-let minstaParti = 0;
-let störstaBlock = 0; //Indexet för det största blocket i block-objektet
-let störstaIdeologi = 0; //Indexet för den största ideologin i ideologi-objektet
-let idString = ""; //En string där alla partiledare som tillhör den största ideologin läggs till, sepparerade med och
-let blockString = ""; //Samma som med idString fast med det största blocket
-let newIdString = ""; //Samma idString fast utan det sista och-et
-let newBlockString = ""; //Samma som newIdString fast med blockString
-
-//Objekt med alla block och deras röster
 let blockArr = [
   {
     block: "Oljeblocket",
@@ -117,6 +112,23 @@ let ideologiArr = [
     röster: 0
   }
 ];
+
+module.exports = { val: function(partier, blockArr, ideologiArr) {
+  
+
+//Här deklareras alla variabler, de flesta är ganska självklara
+let totalRöster = 0;
+let befolkning = 0;
+let störstaParti = 0;
+let minstaParti = 0;
+let störstaBlock = 0; //Indexet för det största blocket i block-objektet
+let störstaIdeologi = 0; //Indexet för den största ideologin i ideologi-objektet
+let idString = ""; //En string där alla partiledare som tillhör den största ideologin läggs till, sepparerade med och
+let blockString = ""; //Samma som med idString fast med det största blocket
+let newIdString = ""; //Samma idString fast utan det sista och-et
+let newBlockString = ""; //Samma som newIdString fast med blockString
+
+//Objekt med alla block och deras röster
 
 //2 Arrayer med indexna i partier-objektet hos de partier som tillhör det största blocket samt den största ideologin
 let störstaBlockArr = [];
@@ -278,3 +290,4 @@ newBlockString = blockString.slice(0, -4);
     newBlockString + "är nöjda över att deras block fått störst stöd!"
   );
   console.log("");
+}}
