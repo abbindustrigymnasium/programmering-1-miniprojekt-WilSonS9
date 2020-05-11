@@ -27,7 +27,7 @@ partier: [ //Partierna i valet med deras ideologi, block, minsta antal röster o
     block: "Faze Clan",
     min: 8,
     max: 18,
-    ledare: "Fiske Båt",
+    ledare: "Fish Poggers",
     röster: 0,
     platser: 0
   },
