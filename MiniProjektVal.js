@@ -44,7 +44,7 @@ let riksdagsRöster = totalRöster;
 
 for (let i = 0; i < partier.length; i++) {
   //Om detta parti inte fått 4% av rösterna dras deras röster bort ifrån riksdagsRöster, som bestämmer riksdagsplatser
-  if (partier[i].röster / totalRöster <= 0.04) {
+  if (partier[i].röster / totalRöster < 0.04) {
     riksdagsRöster -= partier[i].röster;
   }
 }
