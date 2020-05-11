@@ -92,7 +92,7 @@ for (let i = 0; i < blockArr.length; i++) {
     " fick: " + 
     blockArr[i].röster + 
   " röster! Detta motsvarar: " + (blockArr[i].röster * 100 / totalRöster).toFixed(2) + 
-  "% av rösterna! Blocket får då: " + (blockArr[i].röster * 100 / riksdagsRöster).toFixed(2) + 
+  "% av rösterna! Blocket får då: " + (blockArr[i].rRöster * 100 / riksdagsRöster).toFixed(2) + 
   "% av riksdagsplatserna!");
 
   if (blockArr[i].röster > blockArr[störstaBlock].röster) {
