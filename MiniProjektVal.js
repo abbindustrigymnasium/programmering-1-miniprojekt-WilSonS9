@@ -1,4 +1,4 @@
-module.exports = { val: function(partier, blockArr, ideologiArr) {
+module.exports = { val: function(partier, blockArr, ideologiArr) { //Denna funktion exporteras som en CommmonJS modul
   
 
 //Här deklareras alla variabler, de flesta är ganska självklara
@@ -10,10 +10,6 @@ let störstaBlock = 0; //Indexet för det största blocket i block-objektet
 let störstaIdeologi = 0; //Indexet för den största ideologin i ideologi-objektet
 let idString = ""; //En string där alla partiledare som tillhör den största ideologin läggs till, sepparerade med och
 let blockString = ""; //Samma som med idString fast med det största blocket
-let newIdString = ""; //Samma idString fast utan det sista och-et
-let newBlockString = ""; //Samma som newIdString fast med blockString
-
-//Objekt med alla block och deras röster
 
 //2 Arrayer med indexna i partier-objektet hos de partier som tillhör det största blocket samt den största ideologin
 let störstaBlockArr = [];
@@ -159,20 +155,18 @@ for (let i = 0; i < störstaIdeologiArr.length; i++) {
   idString += partier[störstaIdeologiArr[i]].ledare + " och ";
 }
 
-newIdString = idString.slice(0, -4);
 
   console.log(
-    newIdString + "är nöjda över att deras ideologi fått störst stöd!"
+    idString.slice(0, -4) + "är nöjda över att deras ideologi fått störst stöd!"
   );
 
 for (let i = 0; i < störstaBlockArr.length; i++) {
   blockString += partier[störstaBlockArr[i]].ledare + " och ";
 }
 
-newBlockString = blockString.slice(0, -4);
 
   console.log(
-    newBlockString + "är nöjda över att deras block fått störst stöd!"
+    blockString.slice(0, -4) + "är nöjda över att deras block fått störst stöd!"
   );
   console.log("");
 }}

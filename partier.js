@@ -1,59 +1,60 @@
 module.exports = {//I detta objekt finns alla partier samt information om dem som bestämmer slutresultatet
-partier: [
+partier: [ //Partierna i valet med deras ideologi, block, minsta antal röster och partiledare, 
+           //samt variabler där partiets röster och riksdagsplatser senare skall bestämmas
   {
-    parti: "Gröngölingarna",
+    parti: "Röda Tjurarna",
     vänster: true,
-    block: "Småpartierna",
+    block: "Faze Clan",
     min: 3,
     max: 12,
-    ledare: "Gustavo Frigolito",
+    ledare: "RedBull Tropical",
     röster: 0,
     platser: 0
   },
   {
-    parti: "Partikelpartiet",
+    parti: "Poggarna",
     vänster: true,
-    block: "Småpartierna",
+    block: "Faze Clan",
     min: 2,
     max: 8,
-    ledare: "Forse Va",
+    ledare: "Poggers Fish",
     röster: 0,
     platser: 0
   },
   {
-    parti: "Mälarpartiet",
+    parti: "Fiskarna",
     vänster: false,
-    block: "Småpartierna",
+    block: "Faze Clan",
     min: 8,
     max: 18,
-    ledare: "Emde Hå",
+    ledare: "Fiske Båt",
     röster: 0,
     platser: 0
   },
   {
-    parti: "Sjörövarpartiet",
+    parti: "Discordianerna",
     vänster: false,
-    block: "Småpartierna",
+    block: "Faze Clan",
     min: 3,
     max: 12,
-    ledare: "Arrr yarrrr",
+    ledare: "Big Marpin",
     röster: 0,
     platser: 0
   },
   {
-    parti: "Extremisterna",
+    parti: "Weebpartiet",
     vänster: false,
-    block: "Oljeblocket",
+    block: "Fnatic",
     min: 3,
     max: 6,
-    ledare: "Hejdolf Snitler",
+    ledare: "Hatsune Miku",
     röster: 0,
     platser: 0
   },
   {
-    parti: "Maskinpartiet",
+    parti: "Teknokraterna",
     vänster: true,
-    block: "Oljeblocket",
+    block: "Fnatic",
     min: 12,
     max: 22,
     ledare: "Mr. Bionicle",
@@ -61,17 +62,17 @@ partier: [
     platser: 0
   },
   {
-    parti: "Framtidspartiet",
+    parti: "Airpodspartiet",
     vänster: false,
-    block: "Oljeblocket",
+    block: "Fnatic",
     min: 12,
     max: 18,
-    ledare: "Andrew Yang",
+    ledare: "Tim Apple",
     röster: 0,
     platser: 0
   },
   {
-    parti: "Allpartiet",
+    parti: "Katolska Kyrkan",
     vänster: true,
     block: "Inget Block",
     min: 20,
@@ -81,14 +82,15 @@ partier: [
     platser: 0
   }
 ],
-blockArr: [
+blockArr: [ //Här finns de olika blocken, med variabler för röster och "riksdagsröster",
+            //vilket är antalet röster från partier i blocket över 4%, alltså de som räknas till riksdagsplatser
   {
-    block: "Oljeblocket",
+    block: "Faze Clan",
     röster: 0,
     rRöster: 0
   },
   {
-    block: "Småpartierna",
+    block: "Fnatic",
     röster: 0,
     rRöster: 0
   },
@@ -99,7 +101,9 @@ blockArr: [
   }
 ],
 
-ideologiArr: [
+ideologiArr: [ //Här är de olika ideologierna, vänster och höger
+               //Här finns en variabel med alla röster på ideologin samt en bool som bestämmer om ideologin är vänster eller ej
+               //Denna bool används i val-funktionen för att matcha de partier som har vänster till samma som ideologin
   {
     ideologi: "Vänster",
     vänster: 1,
