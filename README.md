@@ -12,7 +12,7 @@
   Efter detta behöver du bara skriva node följt av run.js och sedan köra programmet. Resultatet skrivs ut i kommandotolken.
   
 ## Diagram
-![Diagram](/ReadmeBilder/BildMiniprojektDiagram.PNG)
+![Diagram!](/ReadmeBilder/BildMiniprojektDiagram.PNG)
 
 ## LOG
   Logbok för projektet finns i log.md på det andra projektets github, https://github.com/abbindustrigymnasium/driverbot-WilSonS9
