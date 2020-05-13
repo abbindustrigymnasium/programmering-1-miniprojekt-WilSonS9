@@ -10,6 +10,9 @@
 ## Hur kör man programmet?
   Efter att man laddat ned programmet så behöver du bara gå in i programmets folder i en kommandotolk
   Efter detta behöver du bara skriva node följt av run.js och sedan köra programmet. Resultatet skrivs ut i kommandotolken.
+  
+## Diagram
+![GitHub Logo](/ReadmeBilder/BildMiniprojektDiagram.png)
 
 ## LOG
   Logbok för projektet finns i log.md på det andra projektets github, https://github.com/abbindustrigymnasium/driverbot-WilSonS9
